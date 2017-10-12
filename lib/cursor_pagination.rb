@@ -13,7 +13,7 @@ module CursorPagination
 
     def self.decode(cursor)
       unless cursor.nil?
-        new YAML.load(Base64.strict_decode64(cursor))
+        new YAML.load(cursor)
       else
         new nil
       end
@@ -32,7 +32,7 @@ module CursorPagination
     end
 
     def encoded
-      Base64.strict_encode64 cursor.to_yaml
+      cursor.to_yaml
     end
 
     def empty?
